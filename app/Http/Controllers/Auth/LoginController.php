@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -35,5 +36,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->is_active == 0) {
+            $this->guard()->logout();
+            $request->session()->flush();
+            $request->session()->regenerate();
+
+            flash(trans('auth.user_inactive'), 'error');
+
+            return redirect()->route('login');
+        }
+
+        flash(trans('auth.welcome', ['name' => $user->name]));
     }
 }

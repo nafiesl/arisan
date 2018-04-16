@@ -39,10 +39,11 @@
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    {{ __('auth.logout') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <input type="submit" value="{{ __('auth.logout') }}" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
                             </li>
