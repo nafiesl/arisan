@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Change Password Routes
+Route::get('change-password', 'Auth\ChangePasswordController@show')->name('password.change');
+Route::patch('change-password', 'Auth\ChangePasswordController@update')->name('password.change');
+
 Route::get('/home', 'HomeController@index')->name('home');

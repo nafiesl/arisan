@@ -26,7 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li>{{ link_to_route('login', __('auth.login')) }}</li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
@@ -35,6 +35,7 @@
                         </a>
 
                         <ul class="dropdown-menu">
+                            <li>{{ link_to_route('password.change', __('auth.change_password')) }}</li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
