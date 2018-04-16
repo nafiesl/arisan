@@ -12,6 +12,7 @@
         "luthfi/formfield": "^0.2.5"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "luthfi/simple-crud-generator": "dev-master",
