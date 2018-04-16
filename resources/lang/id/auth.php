@@ -2,6 +2,7 @@
 
 return [
     // Login & Logout
+    'register'      => 'Register',
     'login'         => 'Login',
     'profile'       => 'Profil Saya',
     'welcome'       => 'Selamat datang kembali :name.',
