@@ -11,6 +11,7 @@ return [
     'logout'        => 'Keluar',
     'logged_out'    => 'Anda telah logout.',
     'user_inactive' => 'User ini tidak aktif.',
+    'remember_me'   => 'Ingat Saya',
 
     // Password
     'change_password'          => 'Ganti Password',
