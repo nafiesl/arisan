@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cd4ff21835223ea3b7143895c1c5f02",
+    "content-hash": "fc04596a0f667c3ab5853703be451416",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2681,12 +2681,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nafiesl/SimpleCrudGenerator.git",
-                "reference": "70cb13add5d7230ce8f0b8dfa2e79ed4a4f8f708"
+                "reference": "58deee3511e62b65339fb79af914add772b08d2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nafiesl/SimpleCrudGenerator/zipball/70cb13add5d7230ce8f0b8dfa2e79ed4a4f8f708",
-                "reference": "70cb13add5d7230ce8f0b8dfa2e79ed4a4f8f708",
+                "url": "https://api.github.com/repos/nafiesl/SimpleCrudGenerator/zipball/58deee3511e62b65339fb79af914add772b08d2e",
+                "reference": "58deee3511e62b65339fb79af914add772b08d2e",
                 "shasum": ""
             },
             "require": {
@@ -2710,7 +2710,7 @@
                     "Luthfi\\CrudGenerator\\": "src/"
                 }
             },
-            "notification-url": "http://87.98.253.214/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2729,7 +2729,7 @@
                 "tdd-workflow",
                 "testing"
             ],
-            "time": "2018-04-12T14:05:26+00:00"
+            "time": "2018-04-26T23:30:28+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -4225,49 +4225,6 @@
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "time": "2018-03-19T22:32:39+00:00"
-        },
-        {
-            "name": "symfony/thanks",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/thanks.git",
-                "reference": "bade4992c46ed722162694b4af8d72f84402819a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/thanks/zipball/bade4992c46ed722162694b4af8d72f84402819a",
-                "reference": "bade4992c46ed722162694b4af8d72f84402819a",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0",
-                "php": "^5.5.9|^7.0.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "class": "Symfony\\Thanks\\Thanks"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Thanks\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                }
-            ],
-            "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
-            "time": "2018-03-14T21:51:39+00:00"
         },
         {
             "name": "theseer/tokenizer",
