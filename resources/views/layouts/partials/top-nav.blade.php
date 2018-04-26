@@ -29,6 +29,7 @@
                     <li>{{ link_to_route('login', __('auth.login')) }}</li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
+                    <li>{{ link_to_route('groups.index', __('nav_menu.my_groups')) }}</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
