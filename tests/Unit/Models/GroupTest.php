@@ -6,7 +6,7 @@ use App\Group;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase as TestCase;
+use Tests\TestCase;
 
 class GroupTest extends TestCase
 {
@@ -53,6 +53,28 @@ class GroupTest extends TestCase
         $group->addMember($user);
 
         $this->seeInDatabase('group_members', [
+            'group_id' => $group->id,
+            'user_id'  => $user->id,
+        ]);
+    }
+
+    /** @test */
+    public function a_group_has_remove_member_method()
+    {
+        $user = $this->createUser();
+        $group = factory(Group::class)->create();
+
+        $group->addMember($user);
+
+        $groupMember = \DB::table('group_members')->where([
+            'group_id' => $group->id,
+            'user_id'  => $user->id,
+        ])->first();
+
+        $group->removeMember($groupMember->id);
+
+        $this->dontSeeInDatabase('group_members', [
+            'id'       => $groupMember->id,
             'group_id' => $group->id,
             'user_id'  => $user->id,
         ]);

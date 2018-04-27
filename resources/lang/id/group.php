@@ -28,8 +28,13 @@ return [
     'name'        => 'Nama Grup',
     'description' => 'Deskripsi Grup',
 
-    //
-    'members'         => 'Anggota Grup',
-    'add_member'      => 'Tambah Anggota',
-    'add_member_text' => 'Tambah Anggota: masukkan alamat email...',
+    // Memberships
+    'members'               => 'Anggota Grup',
+    'empty_member'          => 'Belum ada Anggota Grup',
+    'add_member'            => 'Tambah Anggota',
+    'add_member_text'       => 'Tambah Anggota: masukkan alamat email...',
+    'member_added'          => 'Tambah Anggota berhasil.',
+    'remove_member'         => 'Keluarkan member',
+    'remove_member_confirm' => 'Anda yakin akan mengeluarkan member ini?',
+    'member_removed'        => 'Anggota berhasil dikeluarkan.',
 ];

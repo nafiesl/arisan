@@ -22,4 +22,16 @@ class MembersController extends Controller
 
         return back();
     }
+
+    public function destroy(Request $request, Group $group, User $member)
+    {
+        $request->validate([
+            'group_member_id' => 'required|numeric|exists:group_members,id',
+        ]);
+        $group->removeMember($request->get('group_member_id'));
+
+        flash(__('group.member_removed'), 'warning');
+
+        return back();
+    }
 }

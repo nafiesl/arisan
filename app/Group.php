@@ -21,7 +21,7 @@ class Group extends Model
 
     public function members()
     {
-        return $this->belongsToMany(User::class, 'group_members');
+        return $this->belongsToMany(User::class, 'group_members')->withPivot(['id']);
     }
 
     public function addMember(User $user)
@@ -29,6 +29,11 @@ class Group extends Model
         $this->members()->attach($user);
 
         return $user;
+    }
+
+    public function removeMember(int $groupMemberId)
+    {
+        return \DB::table('group_members')->delete($groupMemberId);
     }
 
     public function creator()
