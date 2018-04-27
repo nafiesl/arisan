@@ -18,7 +18,8 @@ class GroupsController extends Controller
             $query->where('name', 'like', '%'.request('q').'%');
         })
             ->where('creator_id', auth()->id())
-            ->paginate(25);
+            ->withCount('members')
+            ->paginate();
 
         return view('groups.index', compact('groups'));
     }

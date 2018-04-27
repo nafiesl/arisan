@@ -27,6 +27,7 @@
                     <tr>
                         <th class="text-center">{{ trans('app.table_no') }}</th>
                         <th>{{ trans('group.name') }}</th>
+                        <th class="text-center">{{ trans('group.members') }}</th>
                         <th>{{ trans('group.description') }}</th>
                         <th class="text-center">{{ trans('app.action') }}</th>
                     </tr>
@@ -36,6 +37,7 @@
                     <tr>
                         <td class="text-center">{{ $groups->firstItem() + $key }}</td>
                         <td>{{ $group->nameLink() }}</td>
+                        <td class="text-center">{{ $group->members_count }}</td>
                         <td>{{ $group->description }}</td>
                         <td class="text-center">
                         @can('view', $group)

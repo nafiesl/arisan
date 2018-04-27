@@ -2,8 +2,9 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use App\Group;
+use App\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase as TestCase;
 
@@ -24,6 +25,37 @@ class GroupTest extends TestCase
                 ),
             ]), $group->nameLink()
         );
+    }
+
+    /** @test */
+    public function a_group_has_belongs_to_many_members_relation()
+    {
+        $group = factory(Group::class)->create();
+        $member = factory(User::class)->create();
+
+        $group->members()->attach($member->id);
+
+        $this->seeInDatabase('group_members', [
+            'group_id' => $group->id,
+            'user_id'  => $member->id,
+        ]);
+
+        $this->assertInstanceOf(Collection::class, $group->members);
+        $this->assertInstanceOf(User::class, $group->members->first());
+    }
+
+    /** @test */
+    public function a_group_has_add_member_method()
+    {
+        $user = $this->createUser();
+        $group = factory(Group::class)->create();
+
+        $group->addMember($user);
+
+        $this->seeInDatabase('group_members', [
+            'group_id' => $group->id,
+            'user_id'  => $user->id,
+        ]);
     }
 
     /** @test */

@@ -19,6 +19,18 @@ class Group extends Model
         ]);
     }
 
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'group_members');
+    }
+
+    public function addMember(User $user)
+    {
+        $this->members()->attach($user);
+
+        return $user;
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class);

@@ -2,29 +2,34 @@
 
 return [
     // Labels
-    'group'     => 'Group',
-    'list'           => 'Daftar Group',
-    'search'         => 'Cari Group',
-    'detail'         => 'Detail Group',
-    'not_found'      => 'Group tidak ditemukan',
-    'empty'          => 'Belum ada Group',
-    'back_to_show'   => 'Kembali ke detail Group',
-    'back_to_index'  => 'Kembali ke daftar Group',
+    'group'         => 'Grup',
+    'list'          => 'Daftar Grup',
+    'search'        => 'Cari Grup',
+    'detail'        => 'Detail Grup',
+    'not_found'     => 'Grup tidak ditemukan',
+    'empty'         => 'Belum ada Grup',
+    'back_to_show'  => 'Kembali ke detail Grup',
+    'back_to_index' => 'Kembali ke daftar Grup',
 
     // Actions
-    'create'         => 'Input Group Baru',
-    'created'        => 'Input Group baru telah berhasil.',
-    'show'           => 'Lihat Detail Group',
-    'edit'           => 'Edit Group',
-    'update'         => 'Update Group',
-    'updated'        => 'Update data Group telah berhasil.',
-    'delete'         => 'Hapus Group',
-    'delete_confirm' => 'Anda yakin akan menghapus Group ini?',
-    'deleted'        => 'Hapus data Group telah berhasil.',
-    'undeleted'      => 'Data Group gagal dihapus.',
-    'undeleteable'   => 'Data Group tidak dapat dihapus.',
+    'create'         => 'Buat Grup Baru',
+    'created'        => 'Buat Grup baru telah berhasil.',
+    'show'           => 'Lihat Detail Grup',
+    'edit'           => 'Edit Grup',
+    'update'         => 'Update Grup',
+    'updated'        => 'Update data Grup telah berhasil.',
+    'delete'         => 'Hapus Grup',
+    'delete_confirm' => 'Anda yakin akan menghapus Grup ini?',
+    'deleted'        => 'Hapus data Grup telah berhasil.',
+    'undeleted'      => 'Data Grup gagal dihapus.',
+    'undeleteable'   => 'Data Grup tidak dapat dihapus.',
 
     // Attributes
-    'name'           => 'Nama Group',
-    'description'    => 'Deskripsi Group',
+    'name'        => 'Nama Grup',
+    'description' => 'Deskripsi Grup',
+
+    //
+    'members'         => 'Anggota Grup',
+    'add_member'      => 'Tambah Anggota',
+    'add_member_text' => 'Tambah Anggota: masukkan alamat email...',
 ];
