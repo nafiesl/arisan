@@ -1,74 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.group')
 
-@section('title', __('group.detail'))
+@section('subtitle', __('group.detail'))
 
-@section('content')
-<div class="row">
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">{{ __('group.detail') }}</h3></div>
-            <table class="table table-condensed">
-                <tbody>
-                    <tr><td>{{ __('group.name') }}</td><td>{{ $group->name }}</td></tr>
-                    <tr><td>{{ __('group.members') }}</td><td>{{ $group->members->count() }}</td></tr>
-                    <tr><td>{{ __('group.description') }}</td><td>{{ $group->description }}</td></tr>
-                </tbody>
-            </table>
-            <div class="panel-footer">
-                @can('update', $group)
-                    {{ link_to_route('groups.edit', __('group.edit'), [$group], ['class' => 'btn btn-warning', 'id' => 'edit-group-'.$group->id]) }}
-                @endcan
-                {{ link_to_route('groups.index', __('group.back_to_index'), [], ['class' => 'btn btn-default']) }}
-            </div>
-        </div>
-    </div>
+@section('action-buttons')
+@can('update', $group)
+    {{ link_to_route('groups.edit', __('group.edit'), [$group], ['class' => 'btn btn-warning', 'id' => 'edit-group-'.$group->id]) }}
+@endcan
+@endsection
 
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">{{ __('group.members') }}</h3></div>
-            <table class="table table-condensed">
-                <thead>
-                    <tr>
-                        <th class="text-center">{{ __('app.table_no') }}</th>
-                        <th>{{ __('user.name') }}</th>
-                        <th class="text-center">{{ __('app.action') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($group->members as $key => $member)
-                    <tr>
-                        <td class="text-center">{{ 1 + $key }}</td>
-                        <td>{{ $member->name }}</td>
-                        <td class="text-center">
-                            {!! FormField::delete([
-                                'route' => ['groups.members.destroy', $group, $member],
-                                'onsubmit' => __('group.remove_member_confirm', ['name' => $member->name]),
-                                'class' => '',
-                            ], __('group.remove_member'), [
-                                'class' => 'btn btn-danger btn-xs',
-                                'id' => 'remove-member-' . $member->pivot->id,
-                                'title' => __('group.remove_member'),
-                            ], [
-                                'group_member_id' => $member->pivot->id
-                            ]) !!}
-                        </td>
-                    </tr>
-                    @empty
-                    <tr><td colspan="3">{{ __('group.empty_member') }}</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
-            <div class="panel-body">
-                {{ Form::open(['route' => ['groups.members.store', $group]]) }}
-                <div class="input-group">
-                    {{ Form::text('email', null, ['required' => true, 'class' => 'form-control', 'id' => 'email', 'placeholder' => __('group.add_member_text')]) }}
-                    <span class="input-group-btn">
-                        {{ Form::submit(__('group.add_member'), ['class' => 'btn btn-info']) }}
-                    </span>
-                </div><!-- /input-group -->
-                {{ Form::close() }}
-            </div>
-        </div>
-    </div>
+@section('content-group')
+<div class="panel panel-default table-responsive hidden-xs">
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <td class="col-xs-2 text-center">{{ trans('group.members_count') }}</td>
+            <td class="col-xs-2 text-center">{{ trans('group.start_date') }}</td>
+            <td class="col-xs-2 text-center">{{ trans('group.end_date') }}</td>
+            <td class="col-xs-2 text-center">{{ trans('app.status') }}</td>
+        </tr>
+        <tr>
+            <td class="text-center lead" style="border-top: none;">{{ $group->members->count() }}</td>
+            <td class="text-center lead" style="border-top: none;">{{ $group->start_date }}</td>
+            <td class="text-center lead" style="border-top: none;">{{ $group->end_date }}</td>
+            <td class="text-center lead" style="border-top: none;">{{ $group->status }}</td>
+        </tr>
+    </table>
 </div>
+
+<ul class="list-group visible-xs">
+    <li class="list-group-item">{{ trans('group.members_count') }} <span class="pull-right">{{ $group->members->count() }}</span></li>
+    <li class="list-group-item">{{ trans('group.start_date') }} <span class="pull-right">{{ $group->start_date }}</span></li>
+    <li class="list-group-item">{{ trans('group.end_date') }} <span class="pull-right">{{ $group->end_date }}</span></li>
+    <li class="list-group-item">{{ trans('app.status') }} <span class="pull-right">{{ $group->status }}</span></li>
+</ul>
+@if ($group->description)
+<div class="well well-sm">
+    <strong>{{ trans('group.description') }}</strong><br>{!! nl2br($group->description) !!}
+</div>
+@endif
+
 @endsection

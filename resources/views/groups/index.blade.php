@@ -29,6 +29,7 @@
                         <th>{{ trans('group.name') }}</th>
                         <th class="text-center">{{ trans('group.members') }}</th>
                         <th>{{ trans('group.description') }}</th>
+                        <th>{{ trans('group.creator') }}</th>
                         <th class="text-center">{{ trans('app.action') }}</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <td>{{ $group->nameLink() }}</td>
                         <td class="text-center">{{ $group->members_count }}</td>
                         <td>{{ $group->description }}</td>
+                        <td>{{ $group->creator->name }}</td>
                         <td class="text-center">
                         @can('view', $group)
                             {!! link_to_route(

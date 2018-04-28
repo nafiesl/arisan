@@ -27,9 +27,13 @@ return [
     // Attributes
     'name'        => 'Nama Grup',
     'description' => 'Deskripsi Grup',
+    'start_date'  => 'Tanggal Mulai',
+    'end_date'    => 'Tanggal Selesai',
+    'creator'     => 'Dibuat oleh',
 
     // Memberships
     'members'               => 'Anggota Grup',
+    'members_count'         => 'Jumlah Anggota',
     'empty_member'          => 'Belum ada anggota grup.',
     'add_member'            => 'Tambah Anggota',
     'add_member_text'       => 'Tambah anggota: masukkan alamat email...',

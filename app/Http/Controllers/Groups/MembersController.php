@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class MembersController extends Controller
 {
+    public function index(Group $group)
+    {
+        return view('groups.members', compact('group'));
+    }
+
     public function store(Request $request, Group $group)
     {
         $request->validate([
