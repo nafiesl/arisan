@@ -41,4 +41,8 @@ return [
     'remove_member'         => 'Keluarkan',
     'remove_member_confirm' => 'Anda yakin mengeluarkan :name dari grup ini?',
     'member_removed'        => ':name berhasil dikeluarkan dari grup.',
+
+    // Relations
+    'meetings' => 'List Pertemuan',
+    'payments' => 'List Pembayaran',
 ];

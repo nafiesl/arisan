@@ -20,7 +20,6 @@
     </div>
     <div class="col-md-4 col-md-pull-8">
         <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">{{ __('group.detail') }}</h3></div>
             <table class="table table-condensed">
                 <tbody>
                     <tr><td>{{ __('group.name') }}</td><td>{{ $group->name }}</td></tr>
