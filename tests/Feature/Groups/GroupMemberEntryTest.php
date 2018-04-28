@@ -23,7 +23,7 @@ class GroupMemberEntryTest extends TestCase
         ]);
 
         $this->seePageIs(route('groups.show', $group));
-        $this->see(__('group.member_added'));
+        $this->see(__('group.member_added', ['name' => $newMember->name]));
         $this->see($newMember->name);
 
         $this->seeInDatabase('group_members', [
@@ -50,8 +50,7 @@ class GroupMemberEntryTest extends TestCase
         $this->press('remove-member-'.$groupMember->id);
 
         $this->seePageIs(route('groups.show', $group));
-        $this->see(__('group.member_removed'));
-        $this->dontSee($newMember->name);
+        $this->see(__('group.member_removed', ['name' => $newMember->name]));
 
         $this->dontSeeInDatabase('group_members', [
             'id'       => $groupMember->id,

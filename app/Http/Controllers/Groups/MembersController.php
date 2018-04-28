@@ -18,7 +18,7 @@ class MembersController extends Controller
         $user = User::where('email', $request->get('email'))->first();
         $group->addMember($user);
 
-        flash(__('group.member_added'), 'success');
+        flash(__('group.member_added', ['name' => $user->name]), 'success');
 
         return back();
     }
@@ -30,7 +30,7 @@ class MembersController extends Controller
         ]);
         $group->removeMember($request->get('group_member_id'));
 
-        flash(__('group.member_removed'), 'warning');
+        flash(__('group.member_removed', ['name' => $member->name]), 'warning');
 
         return back();
     }

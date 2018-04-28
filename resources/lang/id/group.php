@@ -30,11 +30,11 @@ return [
 
     // Memberships
     'members'               => 'Anggota Grup',
-    'empty_member'          => 'Belum ada Anggota Grup',
+    'empty_member'          => 'Belum ada anggota grup.',
     'add_member'            => 'Tambah Anggota',
-    'add_member_text'       => 'Tambah Anggota: masukkan alamat email...',
-    'member_added'          => 'Tambah Anggota berhasil.',
-    'remove_member'         => 'Keluarkan member',
-    'remove_member_confirm' => 'Anda yakin akan mengeluarkan member ini?',
-    'member_removed'        => 'Anggota berhasil dikeluarkan.',
+    'add_member_text'       => 'Tambah anggota: masukkan alamat email...',
+    'member_added'          => ':name masuk menjadi anggota grup.',
+    'remove_member'         => 'Keluarkan',
+    'remove_member_confirm' => 'Anda yakin mengeluarkan :name dari grup ini?',
+    'member_removed'        => ':name berhasil dikeluarkan dari grup.',
 ];

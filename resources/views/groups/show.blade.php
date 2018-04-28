@@ -29,7 +29,7 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>{{ __('app.table_no') }}</th>
+                        <th class="text-center">{{ __('app.table_no') }}</th>
                         <th>{{ __('user.name') }}</th>
                         <th class="text-center">{{ __('app.action') }}</th>
                     </tr>
@@ -37,16 +37,15 @@
                 <tbody>
                     @forelse($group->members as $key => $member)
                     <tr>
-                        <td>{{ 1 + $key }}</td>
+                        <td class="text-center">{{ 1 + $key }}</td>
                         <td>{{ $member->name }}</td>
                         <td class="text-center">
                             {!! FormField::delete([
                                 'route' => ['groups.members.destroy', $group, $member],
-                                'onsubmit' => __('group.remove_member_confirm'),
+                                'onsubmit' => __('group.remove_member_confirm', ['name' => $member->name]),
                                 'class' => '',
                             ], __('group.remove_member'), [
                                 'class' => 'btn btn-danger btn-xs',
-                                // 'style' => 'padding:0px 7px;border-radius:50%',
                                 'id' => 'remove-member-' . $member->pivot->id,
                                 'title' => __('group.remove_member'),
                             ], [
