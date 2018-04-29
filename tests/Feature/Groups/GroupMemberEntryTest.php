@@ -3,8 +3,9 @@
 namespace Tests\Feature\Groups;
 
 use App\Group;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase as TestCase;
+use Tests\TestCase;
 
 class GroupMemberEntryTest extends TestCase
 {
@@ -54,6 +55,32 @@ class GroupMemberEntryTest extends TestCase
 
         $this->dontSeeInDatabase('group_members', [
             'id'       => $groupMember->id,
+            'group_id' => $group->id,
+            'user_id'  => $newMember->id,
+        ]);
+    }
+
+    /** @test */
+    public function user_can_entry_non_exsits_user_to_the_group()
+    {
+        $user = $this->loginAsUser();
+        $group = factory(Group::class)->create(['creator_id' => $user->id]);
+
+        $this->visit(route('groups.members.index', $group));
+        $this->submitForm(__('group.add_member'), [
+            'email' => 'nonexistsmember@mail.com',
+        ]);
+
+        $this->seePageIs(route('groups.members.index', $group));
+        $this->see(__('group.member_added', ['name' => 'nonexistsmember']));
+
+        $this->seeInDatabase('users', [
+            'email' => 'nonexistsmember@mail.com',
+        ]);
+
+        $newMember = User::where('email', 'nonexistsmember@mail.com')->first();
+
+        $this->seeInDatabase('group_members', [
             'group_id' => $group->id,
             'user_id'  => $newMember->id,
         ]);
