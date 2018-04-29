@@ -98,6 +98,8 @@ class GroupsController extends Controller
             'name'        => 'required|max:60',
             'capacity'    => 'required|numeric',
             'currency'    => 'required|string',
+            'start_date'  => 'nullable|date|date_format:Y-m-d',
+            'end_date'    => 'nullable|date|date_format:Y-m-d',
             'description' => 'nullable|max:255',
         ]);
 

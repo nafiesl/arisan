@@ -77,6 +77,8 @@ class ManageGroupsTest extends TestCase
             'name'        => 'Group 1 name',
             'capacity'    => 24,
             'currency'    => 'IDR',
+            'start_date'  => '2017-01-01',
+            'end_date'    => '2017-12-31',
             'description' => 'Group 1 description',
         ], $overrides);
     }

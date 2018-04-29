@@ -15,8 +15,10 @@
                     <p>{{ $group->name }}</p>
                     <label class="control-label">{{ __('group.members_count') }}</label>
                     <p>{{ $group->members()->count() }}</p>
-                    <label class="control-label">{{ __('group.capacity') }}</label>
-                    <p>{{ $group->capacity }}</p>
+                    <label class="control-label">{{ __('group.currency') }}</label>
+                    <p>{{ $group->currency }}</p>
+                    <label class="control-label">{{ __('group.status') }}</label>
+                    <p>{{ $group->status }}</p>
                     <label class="control-label">{{ __('group.description') }}</label>
                     <p>{{ $group->description }}</p>
                     {!! $errors->first('group_id', '<span class="form-error small">:message</span>') !!}
@@ -57,6 +59,10 @@
                         {!! FormField::text('currency', ['required' => true, 'label' => __('group.currency')]) !!}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-6">{!! FormField::text('start_date', ['label' => __('group.start_date')]) !!}</div>
+                    <div class="col-md-6">{!! FormField::text('end_date', ['label' => __('group.end_date')]) !!}</div>
+                </div>
                 {!! FormField::textarea('description', ['label' => __('group.description')]) !!}
             </div>
             <div class="panel-footer">
@@ -72,3 +78,21 @@
 </div>
 @endif
 @endsection
+
+@section('styles')
+    {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
+@endsection
+
+@push('scripts')
+    {{ Html::script(url('js/plugins/jquery.datetimepicker.js')) }}
+<script>
+(function() {
+    $('#start_date,#end_date').datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        closeOnDateSelect: true,
+        scrollInput: false
+    });
+})();
+</script>
+@endpush

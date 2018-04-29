@@ -9,6 +9,7 @@ class Group extends Model
 {
     protected $fillable = [
         'name', 'capacity', 'currency',
+        'start_date', 'end_date',
         'description', 'creator_id',
     ];
 
