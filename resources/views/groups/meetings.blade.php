@@ -56,14 +56,26 @@
 </div>
 
 @includeWhen(request('action') == 'set-meeting', 'meetings.partials.set-meeting')
+@includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
+@endsection
+
+@section('styles')
+    {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
 @endsection
 
 @push('scripts')
+    {{ Html::script(url('js/plugins/jquery.datetimepicker.js')) }}
 <script>
-(function () {
+(function() {
     $('#meetingModal').modal({
         show: true,
         backdrop: 'static',
+    });
+    $('#date').datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        closeOnDateSelect: true,
+        scrollInput: false
     });
 })();
 </script>

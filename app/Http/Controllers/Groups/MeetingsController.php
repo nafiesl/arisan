@@ -39,4 +39,25 @@ class MeetingsController extends Controller
 
         return redirect()->route('groups.meetings.index', $group);
     }
+
+    public function update(Request $request, Group $group, Meeting $meeting)
+    {
+        $this->authorize('update', $group);
+
+        $meetingData = $request->validate([
+            'date'  => 'required|date|date_format:Y-m-d',
+            'place' => 'nullable|string|max:255',
+            'notes' => 'nullable|string|max:255',
+        ]);
+
+        $meeting->update($meetingData);
+
+        flash(__('meeting.updated', [
+            'number' => $meeting->number,
+            'date'   => $meetingData['date'],
+            'place'  => $meetingData['place'],
+        ]), 'success');
+
+        return redirect()->route('groups.meetings.index', $group);
+    }
 }
