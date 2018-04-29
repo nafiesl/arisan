@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Meeting;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -85,5 +86,10 @@ class Group extends Model
     public function isClosed()
     {
         return $this->start_date && $this->end_date;
+    }
+
+    public function meetings()
+    {
+        return $this->hasMany(Meeting::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Group;
+use App\Meeting;
 use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -144,4 +145,13 @@ class GroupTest extends TestCase
         $this->assertEquals(trans('group.closed'), $group->status);
     }
 
+    /** @test */
+    public function a_group_has_has_many_meetings_relation()
+    {
+        $group = factory(Group::class)->create();
+        $meeting = factory(Meeting::class)->create(['group_id' => $group->id]);
+
+        $this->assertInstanceOf(Collection::class, $group->meetings);
+        $this->assertInstanceOf(Meeting::class, $group->meetings->first());
+    }
 }
