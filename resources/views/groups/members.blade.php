@@ -36,15 +36,17 @@
             @endforelse
         </tbody>
     </table>
+    @if (!$group->isFull())
     <div class="panel-body">
         {{ Form::open(['route' => ['groups.members.store', $group]]) }}
         <div class="input-group">
-            {{ Form::text('email', null, ['required' => true, 'class' => 'form-control', 'id' => 'email', 'placeholder' => __('group.add_member_text')]) }}
+            {{ Form::email('email', null, ['required' => true, 'class' => 'form-control', 'id' => 'email', 'placeholder' => __('group.add_member_text')]) }}
             <span class="input-group-btn">
                 {{ Form::submit(__('group.add_member'), ['class' => 'btn btn-info']) }}
             </span>
         </div><!-- /input-group -->
         {{ Form::close() }}
     </div>
+    @endif
 </div>
 @endsection

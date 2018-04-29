@@ -40,6 +40,7 @@ return [
     'add_member'            => 'Tambah Anggota',
     'add_member_text'       => 'Tambah anggota: masukkan alamat email...',
     'member_added'          => ':name masuk menjadi anggota grup.',
+    'member_add_failed'     => 'Grup sudah penuh, tidak dapat tambah member lagi.',
     'remove_member'         => 'Keluarkan',
     'remove_member_confirm' => 'Anda yakin mengeluarkan :name dari grup ini?',
     'member_removed'        => ':name berhasil dikeluarkan dari grup.',

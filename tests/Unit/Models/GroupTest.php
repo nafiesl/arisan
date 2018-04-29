@@ -59,6 +59,31 @@ class GroupTest extends TestCase
     }
 
     /** @test */
+    public function new_member_addition_is_limited_to_group_capacity()
+    {
+        $user = $this->createUser();
+        $group = factory(Group::class)->create(['capacity' => 2]);
+
+        $group->addMember($user);
+        $group->addMember($user);
+        $this->assertFalse($group->addMember($user));
+
+        $this->assertCount(2, $group->members);
+    }
+
+    /** @test */
+    public function a_group_has_is_full_method()
+    {
+        $user = $this->createUser();
+        $group = factory(Group::class)->create(['capacity' => 2]);
+
+        $group->addMember($user);
+        $group->addMember($user);
+
+        $this->assertTrue($group->isFull());
+    }
+
+    /** @test */
     public function a_group_has_remove_member_method()
     {
         $user = $this->createUser();

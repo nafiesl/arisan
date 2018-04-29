@@ -29,9 +29,11 @@ class MembersController extends Controller
             $user->save();
         }
 
-        $group->addMember($user);
-
-        flash(__('group.member_added', ['name' => $user->name]), 'success');
+        if ($group->addMember($user) == false) {
+            flash(__('group.member_add_failed'), 'error');
+        } else {
+            flash(__('group.member_added', ['name' => $user->name]), 'success');
+        }
 
         return back();
     }

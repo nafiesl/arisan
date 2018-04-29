@@ -30,9 +30,18 @@ class Group extends Model
 
     public function addMember(User $user)
     {
-        $this->members()->attach($user);
+        if ($this->members()->count() < $this->capacity) {
+            $this->members()->attach($user);
 
-        return $user;
+            return $user;
+        }
+
+        return false;
+    }
+
+    public function isFull()
+    {
+        return $this->capacity == $this->members->count();
     }
 
     public function removeMember(int $groupMemberId)
