@@ -26,6 +26,8 @@ return [
 
     // Attributes
     'name'        => 'Nama Grup',
+    'capacity'    => 'Kapasitas',
+    'currency'    => 'Mata Uang',
     'description' => 'Deskripsi Grup',
     'start_date'  => 'Tanggal Mulai',
     'end_date'    => 'Tanggal Selesai',

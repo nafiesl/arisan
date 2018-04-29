@@ -46,12 +46,12 @@ class GroupsController extends Controller
     {
         $this->authorize('create', new Group);
 
-        $this->validate($request, [
+        $newGroup = $request->validate([
             'name'        => 'required|max:60',
+            'capacity'    => 'required|numeric',
+            'currency'    => 'required|string',
             'description' => 'nullable|max:255',
         ]);
-
-        $newGroup = $request->only('name', 'description');
         $newGroup['creator_id'] = auth()->id();
 
         $group = Group::create($newGroup);
@@ -94,12 +94,14 @@ class GroupsController extends Controller
     {
         $this->authorize('update', $group);
 
-        $this->validate($request, [
+        $groupData = $request->validate([
             'name'        => 'required|max:60',
+            'capacity'    => 'required|numeric',
+            'currency'    => 'required|string',
             'description' => 'nullable|max:255',
         ]);
 
-        $group->update($request->only('name', 'description'));
+        $group->update($groupData);
 
         return redirect()->route('groups.show', $group);
     }

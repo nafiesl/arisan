@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Group;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Tests\TestCase as TestCase;
+use Tests\TestCase;
 
 class ManageGroupsTest extends TestCase
 {
@@ -27,6 +27,8 @@ class ManageGroupsTest extends TestCase
     {
         return array_merge([
             'name'        => 'Group 1 name',
+            'capacity'    => 20,
+            'currency'    => 'IDR',
             'description' => 'Group 1 description',
         ], $overrides);
     }
@@ -73,6 +75,8 @@ class ManageGroupsTest extends TestCase
     {
         return array_merge([
             'name'        => 'Group 1 name',
+            'capacity'    => 24,
+            'currency'    => 'IDR',
             'description' => 'Group 1 description',
         ], $overrides);
     }

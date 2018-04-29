@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateGroupsTable extends Migration
 {
@@ -16,6 +16,8 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 60);
+            $table->unsignedTinyInteger('capacity');
+            $table->string('currency', 10);
             $table->string('description')->nullable();
             $table->unsignedInteger('creator_id');
             $table->timestamps();
