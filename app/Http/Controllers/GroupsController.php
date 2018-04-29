@@ -128,4 +128,30 @@ class GroupsController extends Controller
 
         return back();
     }
+
+    public function setStartDate(Request $request, Group $group)
+    {
+        $this->authorize('update', $group);
+        $request->validate(['start_date' => 'required|date|date_format:Y-m-d']);
+
+        $group->start_date = $request->get('start_date');
+        $group->save();
+
+        flash(trans('group.started'), 'success');
+
+        return back();
+    }
+
+    public function setEndDate(Request $request, Group $group)
+    {
+        $this->authorize('update', $group);
+        $request->validate(['end_date' => 'required|date|date_format:Y-m-d']);
+
+        $group->end_date = $request->get('end_date');
+        $group->save();
+
+        flash(trans('group.ended'), 'success');
+
+        return back();
+    }
 }

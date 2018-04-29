@@ -38,4 +38,50 @@
 </div>
 @endif
 
+@can('update', $group)
+@if ($group->isPlanned())
+    {{ Form::open([
+        'route' => ['groups.set-start-date', $group],
+        'method' => 'patch',
+        'class' => 'form-inline',
+        'style' => 'display:inline',
+        'onsubmit' => 'return confirm("'.__('group.set_start_date_confirm').'")',
+    ]) }}
+    {!! FormField::text('start_date', ['required' => true, 'label' => false, 'placeholder' => __('group.start_date')]) !!}
+    {{ Form::submit(__('group.set_start_date'), ['class' => 'btn btn-default', 'id' => 'set-start-date']) }}
+    {{ Form::close() }}
+@endif
+
+@if ($group->isActive())
+    {{ Form::open([
+        'route' => ['groups.set-end-date', $group],
+        'method' => 'patch',
+        'class' => 'form-inline',
+        'style' => 'display:inline',
+        'onsubmit' => 'return confirm("'.__('group.set_end_date_confirm').'")',
+    ]) }}
+    {!! FormField::text('end_date', ['required' => true, 'label' => false, 'placeholder' => __('group.end_date')]) !!}
+    {{ Form::submit(__('group.set_end_date'), ['class' => 'btn btn-default', 'id' => 'set-end-date']) }}
+    {{ Form::close() }}
+@endif
+@endcan
+
 @endsection
+
+@section('styles')
+    {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
+@endsection
+
+@push('scripts')
+    {{ Html::script(url('js/plugins/jquery.datetimepicker.js')) }}
+<script>
+(function() {
+    $('input[name="start_date"],input[name="end_date"]').datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        closeOnDateSelect: true,
+        scrollInput: false
+    });
+})();
+</script>
+@endpush

@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function () {
     /**
      * Groups Routes
      */
+    Route::patch('groups/{group}/set-start-date', 'GroupsController@setStartDate')->name('groups.set-start-date');
+    Route::patch('groups/{group}/set-end-date', 'GroupsController@setEndDate')->name('groups.set-end-date');
     Route::resource('groups', 'GroupsController');
     Route::resource('groups.meetings', 'Groups\MeetingsController');
     Route::resource('groups.payments', 'Groups\PaymentsController');

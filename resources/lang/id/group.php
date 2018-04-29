@@ -49,6 +49,13 @@ return [
     'active'  => 'Active',
     'closed'  => 'Closed',
 
+    'set_start_date'         => 'Set Tanggal Mulai',
+    'set_start_date_confirm' => 'Anda yakin akan memulai grup ini?',
+    'started'                => 'Group arisan dimulai.',
+    'set_end_date'           => 'Set Tanggal Selesai',
+    'set_end_date_confirm'   => 'Anda yakin akan menyatakan grup ini selesai?',
+    'ended'                  => 'Group arisan selesai.',
+
     // Relations
     'meetings' => 'List Pertemuan',
     'payments' => 'List Pembayaran',
