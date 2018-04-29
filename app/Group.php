@@ -43,4 +43,37 @@ class Group extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getStatusCodeAttribute()
+    {
+        if ($this->isActive()) {
+            return 'active';
+        }
+
+        if ($this->isClosed()) {
+            return 'closed';
+        }
+
+        return 'planned';
+    }
+
+    public function getStatusAttribute()
+    {
+        return trans('group.'.$this->status_code);
+    }
+
+    public function isPlanned()
+    {
+        return is_null($this->start_date) && is_null($this->end_date);
+    }
+
+    public function isActive()
+    {
+        return $this->start_date && is_null($this->end_date);
+    }
+
+    public function isClosed()
+    {
+        return $this->start_date && $this->end_date;
+    }
 }

@@ -23,6 +23,7 @@
             <table class="table table-condensed">
                 <tbody>
                     <tr><td>{{ __('group.name') }}</td><td>{{ $group->name }}</td></tr>
+                    <tr><td>{{ __('app.status') }}</td><td>{{ $group->status }}</td></tr>
                     <tr><td>{{ __('group.capacity') }}</td><td>{{ $group->capacity }}</td></tr>
                     <tr><td>{{ __('group.members') }}</td><td>{{ $group->members->count() }}</td></tr>
                     <tr><td>{{ __('group.currency') }}</td><td>{{ $group->currency }}</td></tr>

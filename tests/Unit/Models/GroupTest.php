@@ -88,4 +88,35 @@ class GroupTest extends TestCase
         $this->assertInstanceOf(User::class, $group->creator);
         $this->assertEquals($group->creator_id, $group->creator->id);
     }
+
+    /** @test */
+    public function a_group_has_planned_status_by_default()
+    {
+        $group = factory(Group::class)->make();
+
+        $this->assertTrue($group->isPlanned());
+        $this->assertEquals(trans('group.planned'), $group->status);
+    }
+
+    /** @test */
+    public function a_group_has_active_status_if_start_date_has_filled()
+    {
+        $group = factory(Group::class)->make(['start_date' => date('Y-m-d')]);
+
+        $this->assertTrue($group->isActive());
+        $this->assertEquals(trans('group.active'), $group->status);
+    }
+
+    /** @test */
+    public function a_group_has_closed_status_if_end_date_has_filled()
+    {
+        $group = factory(Group::class)->make([
+            'start_date' => date('Y-m-d'),
+            'end_date'   => date('Y-m-d'),
+        ]);
+
+        $this->assertTrue($group->isClosed());
+        $this->assertEquals(trans('group.closed'), $group->status);
+    }
+
 }

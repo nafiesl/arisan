@@ -44,6 +44,11 @@ return [
     'remove_member_confirm' => 'Anda yakin mengeluarkan :name dari grup ini?',
     'member_removed'        => ':name berhasil dikeluarkan dari grup.',
 
+    // Statuses
+    'planned' => 'Planned',
+    'active'  => 'Active',
+    'closed'  => 'Closed',
+
     // Relations
     'meetings' => 'List Pertemuan',
     'payments' => 'List Pembayaran',
