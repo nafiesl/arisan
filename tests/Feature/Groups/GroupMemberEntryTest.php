@@ -17,12 +17,12 @@ class GroupMemberEntryTest extends TestCase
         $group = factory(Group::class)->create(['creator_id' => $user->id]);
         $newMember = $this->createUser();
 
-        $this->visit(route('groups.show', $group));
+        $this->visit(route('groups.members.index', $group));
         $this->submitForm(__('group.add_member'), [
             'email' => $newMember->email,
         ]);
 
-        $this->seePageIs(route('groups.show', $group));
+        $this->seePageIs(route('groups.members.index', $group));
         $this->see(__('group.member_added', ['name' => $newMember->name]));
         $this->see($newMember->name);
 
@@ -46,10 +46,10 @@ class GroupMemberEntryTest extends TestCase
             'user_id'  => $newMember->id,
         ])->first();
 
-        $this->visit(route('groups.show', $group));
+        $this->visit(route('groups.members.index', $group));
         $this->press('remove-member-'.$groupMember->id);
 
-        $this->seePageIs(route('groups.show', $group));
+        $this->seePageIs(route('groups.members.index', $group));
         $this->see(__('group.member_removed', ['name' => $newMember->name]));
 
         $this->dontSeeInDatabase('group_members', [
