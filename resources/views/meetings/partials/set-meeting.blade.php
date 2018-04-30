@@ -21,6 +21,7 @@
             </div>
             <div class="modal-footer">
                 {{ Form::submit(__('meeting.create', ['number' => $meetingNumber]), ['class' => 'btn btn-info']) }}
+                {{ link_to_route('groups.meetings.index', __('app.cancel'), $group, ['class' => 'btn btn-default']) }}
             </div>
             {{ Form::close() }}
         </div>

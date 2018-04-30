@@ -58,10 +58,10 @@ class MeetingEntryTest extends TestCase
         $meeting = factory(Meeting::class)->create(['group_id' => $group->id]);
 
         $meetingNumber = 1;
-        $this->visit(route('groups.meetings.index', $group));
+        $this->visit(route('meetings.show', $meeting));
         $this->seeElement('a', ['id' => 'edit-meeting-'.$meetingNumber]);
         $this->click('edit-meeting-'.$meetingNumber);
-        $this->seePageIs(route('groups.meetings.index', [$group, 'action' => 'edit-meeting', 'number' => $meetingNumber]));
+        $this->seePageIs(route('meetings.show', [$meeting, 'action' => 'edit-meeting']));
 
         $this->submitForm(__('meeting.update', ['number' => $meetingNumber]), [
             'date'  => '2017-02-06',
@@ -69,7 +69,7 @@ class MeetingEntryTest extends TestCase
             'notes' => 'Si B belum transfer.',
         ]);
 
-        $this->seePageIs(route('groups.meetings.index', $group));
+        $this->seePageIs(route('meetings.show', $meeting));
         $this->see(__('meeting.updated', [
             'number' => $meetingNumber,
             'date'   => '2017-02-06',

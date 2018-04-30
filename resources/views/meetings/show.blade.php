@@ -5,11 +5,18 @@
 @section('content')
 <h1 class="page-header">
     <div class="pull-right">
+        {{ link_to_route(
+            'meetings.show',
+            __('meeting.edit', ['number' => $meeting->number]),
+            [$meeting, 'action' => 'edit-meeting'],
+            ['id' => 'edit-meeting-'.$meeting->number, 'class' => 'btn btn-warning']
+        ) }}
         {{ link_to_route('groups.meetings.index', __('meeting.back_to_index'), [$meeting->group], ['class' => 'btn btn-default']) }}
     </div>
     {{ __('meeting.number') }} {{ $meeting->number }}
     <small>{{ $meeting->group->name }}</small>
 </h1>
+
 <div class="row">
     <div class="col-md-4">
         <div class="panel panel-default">
@@ -27,4 +34,28 @@
         </div>
     </div>
 </div>
+
+@includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
 @endsection
+
+@section('styles')
+    {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
+@endsection
+
+@push('scripts')
+    {{ Html::script(url('js/plugins/jquery.datetimepicker.js')) }}
+<script>
+(function() {
+    $('#meetingModal').modal({
+        show: true,
+        backdrop: 'static',
+    });
+    $('#date').datetimepicker({
+        timepicker:false,
+        format:'Y-m-d',
+        closeOnDateSelect: true,
+        scrollInput: false
+    });
+})();
+</script>
+@endpush

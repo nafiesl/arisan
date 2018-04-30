@@ -34,12 +34,6 @@
                                 [$meeting],
                                 ['id' => 'show-meeting-'.$meetingNumber]
                             ) }}
-                            {{ link_to_route(
-                                'groups.meetings.index',
-                                __('app.edit'),
-                                [$group, 'number' => $meetingNumber, 'action' => 'edit-meeting'],
-                                ['id' => 'edit-meeting-'.$meetingNumber]
-                            ) }}
                         </td>
                     </tr>
                 @else
@@ -62,7 +56,6 @@
 </div>
 
 @includeWhen(request('action') == 'set-meeting', 'meetings.partials.set-meeting')
-@includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
 @endsection
 
 @section('styles')

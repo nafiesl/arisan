@@ -39,4 +39,5 @@ Route::group(['middleware' => ['auth']], function () {
      * Meetings Routes
      */
     Route::get('meetings/{meeting}', 'MeetingsController@show')->name('meetings.show');
+    Route::patch('meetings/{meeting}', 'MeetingsController@update')->name('meetings.update');
 });
