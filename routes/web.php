@@ -34,4 +34,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('groups.meetings', 'Groups\MeetingsController');
     Route::resource('groups.payments', 'Groups\PaymentsController');
     Route::resource('groups.members', 'Groups\MembersController');
+
+    /**
+     * Meetings Routes
+     */
+    Route::get('meetings/{meeting}', 'MeetingsController@show')->name('meetings.show');
 });

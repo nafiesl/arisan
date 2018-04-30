@@ -29,6 +29,12 @@
                         <td>&nbsp;</td>
                         <td class="text-center">
                             {{ link_to_route(
+                                'meetings.show',
+                                __('app.show'),
+                                [$meeting],
+                                ['id' => 'show-meeting-'.$meetingNumber]
+                            ) }}
+                            {{ link_to_route(
                                 'groups.meetings.index',
                                 __('app.edit'),
                                 [$group, 'number' => $meetingNumber, 'action' => 'edit-meeting'],

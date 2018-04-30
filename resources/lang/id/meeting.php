@@ -2,9 +2,10 @@
 
 return [
     // Labels
-    'meeting' => 'Pertemuan',
-    'list'    => 'List Pertemuan',
-    'detail'  => 'Detail Pertemuan',
+    'meeting'       => 'Pertemuan',
+    'list'          => 'List Pertemuan',
+    'detail'        => 'Detail Pertemuan',
+    'back_to_index' => 'Kembali ke List Pertemuan',
 
     // Actions
     'create'         => 'Set Pertemuan ke :number',
