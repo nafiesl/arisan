@@ -47,7 +47,7 @@
             <div class="panel-body">
                 {!! FormField::text('name', ['required' => true, 'label' => __('group.name')]) !!}
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         {!! FormField::text('capacity', [
                             'min' => 0,
                             'type' => 'number',
@@ -55,8 +55,14 @@
                             'label' => __('group.capacity'),
                         ]) !!}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         {!! FormField::text('currency', ['required' => true, 'label' => __('group.currency')]) !!}
+                    </div>
+                    <div class="col-md-4">
+                        {!! FormField::price('payment_amount', [
+                            'required' => true,
+                            'label' => __('group.payment_amount')
+                        ]) !!}
                     </div>
                 </div>
                 <div class="row">

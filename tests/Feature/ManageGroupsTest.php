@@ -26,10 +26,11 @@ class ManageGroupsTest extends TestCase
     private function getCreateFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'Group 1 name',
-            'capacity'    => 20,
-            'currency'    => 'IDR',
-            'description' => 'Group 1 description',
+            'name'           => 'Group 1 name',
+            'capacity'       => 20,
+            'currency'       => 'IDR',
+            'payment_amount' => 100000,
+            'description'    => 'Group 1 description',
         ], $overrides);
     }
 
@@ -74,12 +75,13 @@ class ManageGroupsTest extends TestCase
     private function getEditFields(array $overrides = [])
     {
         return array_merge([
-            'name'        => 'Group 1 name',
-            'capacity'    => 24,
-            'currency'    => 'IDR',
-            'start_date'  => '2017-01-01',
-            'end_date'    => '2017-12-31',
-            'description' => 'Group 1 description',
+            'name'           => 'Group 1 name',
+            'capacity'       => 24,
+            'currency'       => 'IDR',
+            'payment_amount' => 100000,
+            'start_date'     => '2017-01-01',
+            'end_date'       => '2017-12-31',
+            'description'    => 'Group 1 description',
         ], $overrides);
     }
 

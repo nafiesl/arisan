@@ -13,12 +13,14 @@
     <table class="table table-condensed table-bordered">
         <tr>
             <td class="col-xs-2 text-center">{{ trans('group.members_count') }}</td>
+            <td class="col-xs-2 text-center">{{ trans('group.payment_amount') }}</td>
             <td class="col-xs-2 text-center">{{ trans('group.start_date') }}</td>
             <td class="col-xs-2 text-center">{{ trans('group.end_date') }}</td>
             <td class="col-xs-2 text-center">{{ trans('app.status') }}</td>
         </tr>
         <tr>
             <td class="text-center lead" style="border-top: none;">{{ $group->members->count() }}</td>
+            <td class="text-center lead" style="border-top: none;">{{ $group->currency }} {{ formatNo($group->payment_amount) }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $group->start_date }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $group->end_date }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $group->status }}</td>
@@ -28,6 +30,7 @@
 
 <ul class="list-group visible-xs">
     <li class="list-group-item">{{ trans('group.members_count') }} <span class="pull-right">{{ $group->members->count() }}</span></li>
+    <li class="list-group-item">{{ trans('group.payment_amount') }} <span class="pull-right">{{ $group->currency }} {{ formatNo($group->payment_amount) }}</span></li>
     <li class="list-group-item">{{ trans('group.start_date') }} <span class="pull-right">{{ $group->start_date }}</span></li>
     <li class="list-group-item">{{ trans('group.end_date') }} <span class="pull-right">{{ $group->end_date }}</span></li>
     <li class="list-group-item">{{ trans('app.status') }} <span class="pull-right">{{ $group->status }}</span></li>

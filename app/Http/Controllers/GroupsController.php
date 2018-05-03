@@ -47,10 +47,11 @@ class GroupsController extends Controller
         $this->authorize('create', new Group);
 
         $newGroup = $request->validate([
-            'name'        => 'required|max:60',
-            'capacity'    => 'required|numeric',
-            'currency'    => 'required|string',
-            'description' => 'nullable|max:255',
+            'name'           => 'required|max:60',
+            'capacity'       => 'required|numeric',
+            'currency'       => 'required|string',
+            'payment_amount' => 'required|numeric',
+            'description'    => 'nullable|max:255',
         ]);
         $newGroup['creator_id'] = auth()->id();
 
@@ -95,12 +96,13 @@ class GroupsController extends Controller
         $this->authorize('update', $group);
 
         $groupData = $request->validate([
-            'name'        => 'required|max:60',
-            'capacity'    => 'required|numeric',
-            'currency'    => 'required|string',
-            'start_date'  => 'nullable|date|date_format:Y-m-d',
-            'end_date'    => 'nullable|date|date_format:Y-m-d',
-            'description' => 'nullable|max:255',
+            'name'           => 'required|max:60',
+            'capacity'       => 'required|numeric',
+            'currency'       => 'required|string',
+            'payment_amount' => 'required|numeric',
+            'start_date'     => 'nullable|date|date_format:Y-m-d',
+            'end_date'       => 'nullable|date|date_format:Y-m-d',
+            'description'    => 'nullable|max:255',
         ]);
 
         $group->update($groupData);

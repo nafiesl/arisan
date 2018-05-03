@@ -25,13 +25,14 @@ return [
     'undeleteable'   => 'Data Grup tidak dapat dihapus.',
 
     // Attributes
-    'name'        => 'Nama Grup',
-    'capacity'    => 'Kapasitas',
-    'currency'    => 'Mata Uang',
-    'description' => 'Deskripsi Grup',
-    'start_date'  => 'Tanggal Mulai',
-    'end_date'    => 'Tanggal Selesai',
-    'creator'     => 'Dibuat oleh',
+    'name'           => 'Nama Grup',
+    'capacity'       => 'Kapasitas',
+    'currency'       => 'Mata Uang',
+    'payment_amount' => 'Iuran',
+    'description'    => 'Deskripsi Grup',
+    'start_date'     => 'Tanggal Mulai',
+    'end_date'       => 'Tanggal Selesai',
+    'creator'        => 'Dibuat oleh',
 
     // Memberships
     'members'               => 'Anggota Grup',

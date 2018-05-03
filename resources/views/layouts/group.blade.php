@@ -26,7 +26,10 @@
                     <tr><td>{{ __('app.status') }}</td><td>{{ $group->status }}</td></tr>
                     <tr><td>{{ __('group.capacity') }}</td><td>{{ $group->capacity }}</td></tr>
                     <tr><td>{{ __('group.members') }}</td><td>{{ $group->members->count() }}</td></tr>
-                    <tr><td>{{ __('group.currency') }}</td><td>{{ $group->currency }}</td></tr>
+                    <tr>
+                        <td>{{ __('group.payment_amount') }}</td>
+                        <td class="text-right">{{ $group->currency }} {{ formatNo($group->payment_amount) }}</td>
+                    </tr>
                     <tr><td>{{ __('group.creator') }}</td><td>{{ $group->creator->name }}</td></tr>
                     <tr><td>{{ __('group.description') }}</td><td>{{ $group->description }}</td></tr>
                 </tbody>

@@ -18,6 +18,7 @@ class CreateGroupsTable extends Migration
             $table->string('name', 60);
             $table->unsignedTinyInteger('capacity');
             $table->string('currency', 10);
+            $table->unsignedInteger('payment_amount');
             $table->string('description')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
