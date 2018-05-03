@@ -33,6 +33,35 @@
             </table>
         </div>
     </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">{{ __('meeting.payments') }}</h3></div>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center">{{ __('app.table_no') }}</th>
+                        <th>{{ __('user.name') }}</th>
+                        <th>{{ __('payment.amount') }}</th>
+                        <th>{{ __('payment.date') }}</th>
+                        <th>{{ __('payment.to') }}</th>
+                        <th class="text-center">{{ __('app.action') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($meeting->group->members as $key => $member)
+                    <tr>
+                        <td class="text-center">{{ 1 + $key }}</td>
+                        <td>{{ $member->name }}</td>
+                        <td class="text-right"></td>
+                        <td class="text-center"></td>
+                        <td></td>
+                        <td class="text-center"></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 @includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
