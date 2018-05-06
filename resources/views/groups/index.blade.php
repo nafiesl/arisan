@@ -28,7 +28,7 @@
                         <th class="text-center">{{ trans('app.table_no') }}</th>
                         <th>{{ trans('group.name') }}</th>
                         <th class="text-center">{{ trans('group.members') }}</th>
-                        <th class="text-center">{{ trans('group.currency') }}</th>
+                        <th class="text-right">{{ trans('group.payment_amount') }}</th>
                         <th class="text-center">{{ trans('app.status') }}</th>
                         <th>{{ trans('group.creator') }}</th>
                         <th class="text-center">{{ trans('app.action') }}</th>
@@ -40,7 +40,7 @@
                         <td class="text-center">{{ $groups->firstItem() + $key }}</td>
                         <td>{{ $group->nameLink() }}</td>
                         <td class="text-center">{{ $group->members_count }}</td>
-                        <td class="text-center">{{ $group->currency }}</td>
+                        <td class="text-right">{{ $group->currency }} {{ formatNo($group->payment_amount) }}</td>
                         <td class="text-center">{{ $group->status }}</td>
                         <td>{{ $group->creator->name }}</td>
                         <td class="text-center">

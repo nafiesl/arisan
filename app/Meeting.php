@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Group;
+use App\Payment;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,10 @@ class Meeting extends Model
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

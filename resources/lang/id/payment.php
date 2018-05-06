@@ -29,4 +29,8 @@ return [
     'date'    => 'Tanggal',
     'to'      => 'Dibayar Kepada',
     'creator' => 'Dibuat oleh',
+
+    // Status
+    'done'    => 'Sudah',
+    'not_yet' => 'Belum',
 ];

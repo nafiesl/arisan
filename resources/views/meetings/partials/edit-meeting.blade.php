@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6">{!! FormField::textDisplay('number', $meeting->number, ['label' => __('meeting.number')]) !!}</div>
-                    <div class="col-md-6">{!! FormField::text('date', ['required' => true, 'label' => __('meeting.date')]) !!}</div>
+                    <div class="col-md-6">{!! FormField::text('date', ['required' => true, 'label' => __('meeting.date'), 'class' => 'date-select']) !!}</div>
                 </div>
                 {!! FormField::text('place', ['label' => __('meeting.place'), 'placeholder' => 'Contoh: Inter Cafe']) !!}
                 {!! FormField::textarea('notes', ['label' => __('meeting.notes')]) !!}

@@ -39,24 +39,76 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th class="text-center">{{ __('app.table_no') }}</th>
-                        <th>{{ __('user.name') }}</th>
-                        <th>{{ __('payment.amount') }}</th>
-                        <th>{{ __('payment.date') }}</th>
-                        <th>{{ __('payment.to') }}</th>
-                        <th class="text-center">{{ __('app.action') }}</th>
+                        <th style="width: 5%" class="text-center">{{ __('app.table_no') }}</th>
+                        <th style="width: 25%">{{ __('user.name') }}</th>
+                        <th style="width: 10%" class="text-center">{{ __('app.status') }}</th>
+                        <th style="width: 17%" class="text-center">{{ __('payment.amount') }}</th>
+                        <th style="width: 13%" class="text-center">{{ __('payment.date') }}</th>
+                        <th style="width: 20%">{{ __('payment.to') }}</th>
+                        <th style="width: 10%" class="text-center">{{ __('app.action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($meeting->group->members as $key => $member)
+                    @foreach($members as $key => $member)
+                    @php
+                        $membershipId = $member->pivot->id;
+                        $payment = $payments->filter(function ($payment) use ($membershipId, $meeting) {
+                            return $payment->membership_id == $membershipId
+                            && $payment->meeting_id == $meeting->id;
+                        })->first();
+                    @endphp
+                    {{ Form::open(['route' => ['meetings.payment-entry', $meeting]]) }}
+                    {{ Form::hidden('membership_id', $membershipId) }}
                     <tr>
                         <td class="text-center">{{ 1 + $key }}</td>
                         <td>{{ $member->name }}</td>
-                        <td class="text-right"></td>
-                        <td class="text-center"></td>
-                        <td></td>
-                        <td class="text-center"></td>
+                        <td class="text-center">
+                            @if ($payment)
+                                <span class="label label-success">{{ __('payment.done') }}</span>
+                            @else
+                                <span class="label label-default">{{ __('payment.not_yet') }}</span>
+                            @endif
+                        </td>
+                        <td class="text-right">
+                            {!! FormField::price(
+                                'amount',
+                                ['value' => optional($payment)->amount, 'label' => false, 'required' => true]
+                            ) !!}
+                        </td>
+                        <td class="text-center">
+                            {!! FormField::text(
+                                'date',
+                                [
+                                    'value' => $payment ? $payment->date : $meeting->date,
+                                    'label' => false,
+                                    'required' => true,
+                                    'class' => 'date-select',
+                                ]
+                            ) !!}
+                        </td>
+                        <td>
+                            {!! FormField::select(
+                                'payment_receiver_id',
+                                $members->pluck('name', 'id'),
+                                [
+                                    'value' => optional($payment)->payment_receiver_id,
+                                    'label' => false,
+                                    'required' => true
+                                ]
+                            ) !!}
+                        </td>
+                        <td class="text-center">
+                            {{ Form::submit(
+                                __('app.update'),
+                                [
+                                    'id' => 'payment-entry-'.$membershipId,
+                                    'class' => 'btn btn-success btn-xs',
+                                    'title' => __('payment.update'),
+                                ]
+                            ) }}
+                        </td>
                     </tr>
+                    {{ Form::close() }}
                     @endforeach
                 </tbody>
             </table>
@@ -69,6 +121,9 @@
 
 @section('styles')
     {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
+    <style>
+        .table .input-group-addon { padding: 5px 8px; }
+    </style>
 @endsection
 
 @push('scripts')
@@ -79,7 +134,7 @@
         show: true,
         backdrop: 'static',
     });
-    $('#date').datetimepicker({
+    $('.date-select').datetimepicker({
         timepicker:false,
         format:'Y-m-d',
         closeOnDateSelect: true,
