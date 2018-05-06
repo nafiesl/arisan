@@ -41,4 +41,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('meetings/{meeting}', 'MeetingsController@show')->name('meetings.show');
     Route::patch('meetings/{meeting}', 'MeetingsController@update')->name('meetings.update');
     Route::post('meetings/{meeting}/payment-entry', 'MeetingsController@paymentEntry')->name('meetings.payment-entry');
+    Route::post('meetings/{meeting}/set-winner', 'MeetingsController@setWinner')->name('meetings.set-winner');
 });

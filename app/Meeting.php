@@ -12,6 +12,7 @@ class Meeting extends Model
     protected $fillable = [
         'group_id', 'number', 'date',
         'place', 'notes', 'creator_id',
+        'winner_id',
     ];
 
     public function group()

@@ -20,6 +20,9 @@ return [
     'undeleted'      => 'Pertemuan gagal dihapus.',
     'undeleteable'   => 'Pertemuan tidak dapat dihapus.',
 
+    'set_winner' => 'Set Pemenang',
+    'winner_set' => 'Pemenang pertemuan ini adalah :name',
+
     // Attributes
     'number'  => 'Pertemuan ke',
     'date'    => 'Tanggal',

@@ -16,6 +16,7 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('group_id');
+            $table->unsignedInteger('winner_id')->nullable();
             $table->unsignedTinyInteger('number');
             $table->date('date');
             $table->string('place')->nullable();

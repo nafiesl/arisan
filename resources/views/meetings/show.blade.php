@@ -31,6 +31,20 @@
                     <tr><td>{{ __('meeting.notes') }}</td><td>{{ $meeting->notes }}</td></tr>
                 </tbody>
             </table>
+            {{ Form::open(['route' => ['meetings.set-winner', $meeting]]) }}
+            <div class="panel-body">
+                {!! FormField::select(
+                    'winner_id',
+                    $memberList,
+                    [
+                        'required' => true
+                    ]
+                ) !!}
+            </div>
+            <div class="panel-footer">
+                {{ Form::submit(__('meeting.set_winner'), ['id' => 'set-winner', 'class' => 'btn btn-info']) }}
+            </div>
+            {{ Form::close() }}
         </div>
     </div>
     <div class="col-md-8">
@@ -63,7 +77,9 @@
                         <td class="text-center">{{ 1 + $key }}</td>
                         <td>{{ $member->name }}</td>
                         <td class="text-center">
-                            @if ($payment)
+                            @if ($meeting->winner_id == $membershipId)
+                                <span class="label label-primary">{{ __('meeting.winner') }}</span>
+                            @elseif ($payment)
                                 <span class="label label-success">{{ __('payment.done') }}</span>
                             @else
                                 <span class="label label-default">{{ __('payment.not_yet') }}</span>

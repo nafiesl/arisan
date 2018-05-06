@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Meeting;
 use App\Payment;
+use App\User;
 use Illuminate\Http\Request;
 
 class MeetingsController extends Controller
@@ -13,8 +14,13 @@ class MeetingsController extends Controller
         $group = $meeting->group;
         $members = $group->members;
         $payments = $meeting->payments;
+        $memberList = [];
 
-        return view('meetings.show', compact('meeting', 'group', 'members', 'payments'));
+        foreach ($members as $member) {
+            $memberList[$member->pivot->id] = $member->name;
+        }
+
+        return view('meetings.show', compact('meeting', 'group', 'members', 'payments', 'memberList'));
     }
 
     public function update(Request $request, Meeting $meeting)
@@ -61,6 +67,21 @@ class MeetingsController extends Controller
         $payment->save();
 
         flash(__('payment.updated'), 'success');
+
+        return back();
+    }
+
+    public function setWinner(Request $request, Meeting $meeting)
+    {
+        $winnerData = $request->validate(['winner_id' => 'required|numeric|exists:group_members,id']);
+
+        $meeting->winner_id = $winnerData['winner_id'];
+        $meeting->save();
+
+        $userId = \DB::table('group_members')->where('id', $winnerData['winner_id'])->first()->user_id;
+        $user = User::find($userId);
+
+        flash(__('meeting.winner_set', ['name' => $user->name]), 'success');
 
         return back();
     }
