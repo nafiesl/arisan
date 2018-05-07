@@ -26,11 +26,15 @@ class MeetingWinnerTest extends TestCase
 
         $membershipId = $group->members->first()->pivot->id;
         $this->visit(route('meetings.show', $meeting));
-        $this->seeElement('input', ['id' => 'set-winner']);
+        $this->seeElement('a', ['id' => 'set-winner']);
+        $this->click('set-winner');
+        $this->seePageIs(route('meetings.show', [$meeting, 'action' => 'set-winner']));
 
         $this->submitForm(__('meeting.set_winner'), [
             'winner_id' => $membershipId,
         ]);
+
+        $this->seePageIs(route('meetings.show', $meeting));
         $this->see(__('meeting.winner_set', ['name' => $newMember->name]));
 
         $this->seeInDatabase('meetings', [

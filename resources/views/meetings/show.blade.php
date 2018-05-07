@@ -7,6 +7,12 @@
     <div class="pull-right">
         {{ link_to_route(
             'meetings.show',
+            __('meeting.set_winner'),
+            [$meeting, 'action' => 'set-winner'],
+            ['id' => 'set-winner', 'class' => 'btn btn-success']
+        ) }}
+        {{ link_to_route(
+            'meetings.show',
             __('meeting.edit', ['number' => $meeting->number]),
             [$meeting, 'action' => 'edit-meeting'],
             ['id' => 'edit-meeting-'.$meeting->number, 'class' => 'btn btn-warning']
@@ -31,20 +37,6 @@
                     <tr><td>{{ __('meeting.notes') }}</td><td>{{ $meeting->notes }}</td></tr>
                 </tbody>
             </table>
-            {{ Form::open(['route' => ['meetings.set-winner', $meeting]]) }}
-            <div class="panel-body">
-                {!! FormField::select(
-                    'winner_id',
-                    $memberList,
-                    [
-                        'required' => true
-                    ]
-                ) !!}
-            </div>
-            <div class="panel-footer">
-                {{ Form::submit(__('meeting.set_winner'), ['id' => 'set-winner', 'class' => 'btn btn-info']) }}
-            </div>
-            {{ Form::close() }}
         </div>
     </div>
     <div class="col-md-8">
@@ -133,6 +125,29 @@
 </div>
 
 @includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
+
+@if (request('action') == 'set-winner')
+<div id="meetingModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                {{ link_to_route('meetings.show', '&times;', $meeting, ['class' => 'close']) }}
+                <h4 class="modal-title">{{ __('meeting.set_winner') }}</h4>
+            </div>
+            {{ Form::model($meeting, ['route' => ['meetings.set-winner', $meeting]]) }}
+            <div class="modal-body">
+                {!! FormField::select('winner_id', $memberList, ['required' => true, 'label' => __('meeting.winner')]) !!}
+            </div>
+            <div class="modal-footer">
+                {{ Form::submit(__('meeting.set_winner'), ['class' => 'btn btn-info']) }}
+                {{ link_to_route('meetings.show', __('app.cancel'), $meeting, ['class' => 'btn btn-default']) }}
+            </div>
+            {{ Form::close() }}
+        </div>
+    </div>
+</div>
+@endif
 @endsection
 
 @section('styles')

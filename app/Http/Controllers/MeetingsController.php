@@ -83,6 +83,6 @@ class MeetingsController extends Controller
 
         flash(__('meeting.winner_set', ['name' => $user->name]), 'success');
 
-        return back();
+        return redirect()->route('meetings.show', $meeting);
     }
 }
