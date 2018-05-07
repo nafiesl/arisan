@@ -137,7 +137,7 @@
             </div>
             {{ Form::model($meeting, ['route' => ['meetings.set-winner', $meeting]]) }}
             <div class="modal-body">
-                {!! FormField::select('winner_id', $memberList, ['required' => true, 'label' => __('meeting.winner')]) !!}
+                {!! FormField::select('winner_id', $winnerCadidateList, ['required' => true, 'label' => __('meeting.winner')]) !!}
             </div>
             <div class="modal-footer">
                 {{ Form::submit(__('meeting.set_winner'), ['class' => 'btn btn-info']) }}

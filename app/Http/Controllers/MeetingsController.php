@@ -6,6 +6,7 @@ use App\Meeting;
 use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class MeetingsController extends Controller
 {
@@ -14,13 +15,26 @@ class MeetingsController extends Controller
         $group = $meeting->group;
         $members = $group->members;
         $payments = $meeting->payments;
-        $memberList = [];
+        $winnerCadidateList = $this->getWinnerCandidates($meeting, $members);
+
+        return view('meetings.show', compact('meeting', 'group', 'members', 'payments', 'winnerCadidateList'));
+    }
+
+    private function getWinnerCandidates(Meeting $meeting, Collection $members)
+    {
+        $winnerCandidateList = [];
+
+        $winnerMemberIds = Meeting::where('id', '!=', $meeting->id)->pluck('winner_id')->all();
 
         foreach ($members as $member) {
-            $memberList[$member->pivot->id] = $member->name;
+            $memberId = $member->pivot->id;
+
+            if (in_array($memberId, $winnerMemberIds) == false) {
+                $winnerCandidateList[$memberId] = $member->name;
+            }
         }
 
-        return view('meetings.show', compact('meeting', 'group', 'members', 'payments', 'memberList'));
+        return $winnerCandidateList;
     }
 
     public function update(Request $request, Meeting $meeting)
