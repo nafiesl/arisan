@@ -3,8 +3,8 @@
 namespace Tests\Unit\Policies;
 
 use App\Group;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class GroupPolicyTest extends TestCase
 {

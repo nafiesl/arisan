@@ -25,7 +25,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
 
-    /**
+    /*
      * Groups Routes
      */
     Route::patch('groups/{group}/set-start-date', 'GroupsController@setStartDate')->name('groups.set-start-date');
@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('groups.payments', 'Groups\PaymentsController');
     Route::resource('groups.members', 'Groups\MembersController');
 
-    /**
+    /*
      * Meetings Routes
      */
     Route::get('meetings/{meeting}', 'MeetingsController@show')->name('meetings.show');

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Groups;
 
-use App\Group;
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Group;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MembersController extends Controller
 {
@@ -22,7 +22,7 @@ class MembersController extends Controller
 
         $user = User::firstOrNew(['email' => $userData['email']]);
 
-        if (!$user->exists) {
+        if (! $user->exists) {
             $newUserName = explode('@', $userData['email']);
             $user->name = $newUserName[0];
             $user->password = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm';

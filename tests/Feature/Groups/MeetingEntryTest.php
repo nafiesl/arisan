@@ -4,8 +4,8 @@ namespace Tests\Feature\Groups;
 
 use App\Group;
 use App\Meeting;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class MeetingEntryTest extends TestCase
 {
