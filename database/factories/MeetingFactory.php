@@ -1,12 +1,11 @@
 <?php
 
+use App\User;
 use App\Group;
 use App\Meeting;
-use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Meeting::class, function (Faker $faker) {
-
     return [
         'group_id'   => function () {
             return factory(Group::class)->create()->id;

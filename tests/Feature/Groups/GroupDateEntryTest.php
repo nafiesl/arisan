@@ -3,8 +3,8 @@
 namespace Tests\Feature\Groups;
 
 use App\Group;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class GroupDateEntryTest extends TestCase
 {

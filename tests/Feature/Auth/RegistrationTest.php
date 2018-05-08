@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Controllers\Auth;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class RegistrationTest extends TestCase
 {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Meeting;
 use App\Payment;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
