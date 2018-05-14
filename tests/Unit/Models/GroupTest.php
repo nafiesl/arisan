@@ -154,4 +154,16 @@ class GroupTest extends TestCase
         $this->assertInstanceOf(Collection::class, $group->meetings);
         $this->assertInstanceOf(Meeting::class, $group->meetings->first());
     }
+
+    /** @test */
+    public function a_group_has_winner_payoff_attribute()
+    {
+        $group = factory(Group::class)->create(['payment_amount' => 50]);
+        $member = factory(User::class)->create();
+
+        $group->addMember($member);
+        $group->addMember($member);
+
+        $this->assertEquals(100, $group->winner_payoff);
+    }
 }

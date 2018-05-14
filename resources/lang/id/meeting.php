@@ -6,6 +6,8 @@ return [
     'list'          => 'List Pertemuan',
     'detail'        => 'Detail Pertemuan',
     'back_to_index' => 'Kembali ke List Pertemuan',
+    'payment_total' => 'Dana Terkumpul',
+    'outstanding'   => 'Kekurangan',
 
     // Actions
     'create'         => 'Set Pertemuan ke :number',

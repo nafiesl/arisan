@@ -17,10 +17,10 @@
             [$meeting, 'action' => 'edit-meeting'],
             ['id' => 'edit-meeting-'.$meeting->number, 'class' => 'btn btn-warning']
         ) }}
-        {{ link_to_route('groups.meetings.index', __('meeting.back_to_index'), [$meeting->group], ['class' => 'btn btn-default']) }}
+        {{ link_to_route('groups.meetings.index', __('meeting.back_to_index'), [$group], ['class' => 'btn btn-default']) }}
     </div>
     {{ __('meeting.number') }} {{ $meeting->number }}
-    <small>{{ $meeting->group->name }}</small>
+    <small>{{ $group->name }}</small>
 </h1>
 
 <div class="row">
@@ -29,7 +29,7 @@
             <div class="panel-heading"><h3 class="panel-title">{{ __('meeting.detail') }}</h3></div>
             <table class="table table-condensed">
                 <tbody>
-                    <tr><td class="col-md-4">{{ __('group.group') }}</td><td>{{ $meeting->group->nameLink() }}</td></tr>
+                    <tr><td class="col-md-4">{{ __('group.group') }}</td><td>{{ $group->nameLink() }}</td></tr>
                     <tr><td>{{ __('meeting.number') }}</td><td>{{ $meeting->number }}</td></tr>
                     <tr><td>{{ __('meeting.date') }}</td><td>{{ $meeting->date }}</td></tr>
                     <tr><td>{{ __('meeting.place') }}</td><td>{{ $meeting->place }}</td></tr>
@@ -40,6 +40,7 @@
         </div>
     </div>
     <div class="col-md-8">
+        @include ('meetings.partials.stats')
         <div class="panel panel-default">
             <div class="panel-heading"><h3 class="panel-title">{{ __('meeting.payments') }}</h3></div>
             <table class="table table-condensed">
@@ -80,7 +81,10 @@
                         <td class="text-right">
                             {!! FormField::price(
                                 'amount',
-                                ['value' => optional($payment)->amount, 'label' => false, 'required' => true]
+                                [
+                                    'value' => optional($payment)->amount, 'label' => false,
+                                    'required' => true, 'currency' => $group->currency
+                                ]
                             ) !!}
                         </td>
                         <td class="text-center">
@@ -119,42 +123,24 @@
                     {{ Form::close() }}
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3" class="text-center">{{ __('app.total') }}</th>
+                        <th class="text-right">{{ $group->currency }} {{ formatNo($payments->sum('amount')) }}</th>
+                        <th colspan="3">&nbsp;</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
 </div>
 
 @includeWhen(request('action') == 'edit-meeting', 'meetings.partials.edit-meeting')
-
-@if (request('action') == 'set-winner')
-<div id="meetingModal" class="modal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                {{ link_to_route('meetings.show', '&times;', $meeting, ['class' => 'close']) }}
-                <h4 class="modal-title">{{ __('meeting.set_winner') }}</h4>
-            </div>
-            {{ Form::model($meeting, ['route' => ['meetings.set-winner', $meeting]]) }}
-            <div class="modal-body">
-                {!! FormField::select('winner_id', $winnerCadidateList, ['required' => true, 'label' => __('meeting.winner')]) !!}
-            </div>
-            <div class="modal-footer">
-                {{ Form::submit(__('meeting.set_winner'), ['class' => 'btn btn-info']) }}
-                {{ link_to_route('meetings.show', __('app.cancel'), $meeting, ['class' => 'btn btn-default']) }}
-            </div>
-            {{ Form::close() }}
-        </div>
-    </div>
-</div>
-@endif
+@includeWhen (request('action') == 'set-winner', 'meetings.partials.set-winner')
 @endsection
 
 @section('styles')
     {{ Html::style(url('css/plugins/jquery.datetimepicker.css')) }}
-    <style>
-        .table .input-group-addon { padding: 5px 8px; }
-    </style>
 @endsection
 
 @push('scripts')

@@ -33,6 +33,7 @@ return [
     'start_date'     => 'Tanggal Mulai',
     'end_date'       => 'Tanggal Selesai',
     'creator'        => 'Dibuat oleh',
+    'winner_payoff'  => 'Dapat Arisan',
 
     // Memberships
     'members'               => 'Anggota Grup',

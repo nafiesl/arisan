@@ -44,8 +44,10 @@ table .text-top { vertical-align: top !important; }
 table .text-middle { vertical-align: middle !important; }
 table .text-bottom { vertical-align: bottom !important; }
 table.small-text { font-size: 12px; }
+.panel .table { margin-bottom: 0px; }
 .table .form-group { margin-bottom: 0px; }
 .table .form-group .form-control { border-radius: 0px; padding: 4px 6px; height: 26px; }
+.table .input-group-addon { padding: 5px 10px; }
 /* End of Table */
 
 // Nav Tabs

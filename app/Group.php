@@ -91,4 +91,9 @@ class Group extends Model
     {
         return $this->hasMany(Meeting::class);
     }
+
+    public function getWinnerPayoffAttribute()
+    {
+        return $this->members->count() * $this->payment_amount;
+    }
 }
