@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Membership;
 use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model

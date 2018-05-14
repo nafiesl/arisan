@@ -9,15 +9,22 @@
             <tr>
                 <th class="text-center">{{ __('app.table_no') }}</th>
                 <th>{{ __('user.name') }}</th>
+                <th>{{ __('meeting.win') }}</th>
                 <th class="text-center">{{ __('app.action') }}</th>
             </tr>
         </thead>
         <tbody>
             @forelse($group->members as $key => $member)
+            @php
+                $membershipId = $member->pivot->id;
+                $winningMeeting = $meetings->where('winner_id', $membershipId)->first();
+            @endphp
             <tr>
                 <td class="text-center">{{ 1 + $key }}</td>
                 <td>{{ $member->name }}</td>
+                <td>{{ $winningMeeting ? __('meeting.meeting').' '.$winningMeeting->number : '' }}</td>
                 <td class="text-center">
+                    @unless ($winningMeeting)
                     {!! FormField::delete([
                         'route' => ['groups.members.destroy', $group, $member],
                         'onsubmit' => __('group.remove_member_confirm', ['name' => $member->name]),
@@ -29,6 +36,7 @@
                     ], [
                         'group_member_id' => $member->pivot->id
                     ]) !!}
+                    @endunless
                 </td>
             </tr>
             @empty

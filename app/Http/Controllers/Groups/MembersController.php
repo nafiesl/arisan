@@ -11,7 +11,9 @@ class MembersController extends Controller
 {
     public function index(Group $group)
     {
-        return view('groups.members', compact('group'));
+        $meetings = $group->meetings;
+
+        return view('groups.members', compact('group', 'meetings'));
     }
 
     public function store(Request $request, Group $group)

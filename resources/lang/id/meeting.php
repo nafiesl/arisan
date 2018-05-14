@@ -8,6 +8,7 @@ return [
     'back_to_index' => 'Kembali ke List Pertemuan',
     'payment_total' => 'Dana Terkumpul',
     'outstanding'   => 'Kekurangan',
+    'win'           => 'Menang',
 
     // Actions
     'create'         => 'Set Pertemuan ke :number',
