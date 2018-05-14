@@ -3,8 +3,10 @@
 namespace Tests\Unit\Models;
 
 use App\User;
+use App\Group;
 use App\Meeting;
 use App\Payment;
+use App\Membership;
 use Tests\TestCase;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -30,5 +32,31 @@ class MeetingTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $meeting->payments);
         $this->assertInstanceOf(Payment::class, $meeting->payments->first());
+    }
+
+    /** @test */
+    public function a_meeting_has_belongs_to_group_relation()
+    {
+        $group = factory(Group::class)->create();
+        $meeting = factory(Meeting::class)->create(['group_id' => $group->id]);
+
+        $this->assertInstanceOf(Group::class, $meeting->group);
+        $this->assertEquals($meeting->group_id, $meeting->group->id);
+    }
+
+    /** @test */
+    public function a_meeting_has_belongs_to_winner_relation()
+    {
+        $group = factory(Group::class)->create();
+        $newMember = $this->createUser();
+        $group->addMember($newMember);
+        $membershipId = $group->members->first()->pivot->id;
+        $meeting = factory(Meeting::class)->create([
+            'group_id'  => $group->id,
+            'winner_id' => $membershipId,
+        ]);
+
+        $this->assertInstanceOf(Membership::class, $meeting->winner);
+        $this->assertEquals($membershipId, $meeting->winner->id);
     }
 }

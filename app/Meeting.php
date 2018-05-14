@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Membership;
 use Illuminate\Database\Eloquent\Model;
 
 class Meeting extends Model
@@ -20,6 +21,11 @@ class Meeting extends Model
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function winner()
+    {
+        return $this->belongsTo(Membership::class)->withDefault(['user' => '-']);
     }
 
     public function payments()
