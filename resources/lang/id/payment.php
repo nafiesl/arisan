@@ -12,7 +12,7 @@ return [
     'back_to_index' => 'Kembali ke daftar Pembayaran',
 
     // Actions
-    'create'         => 'Buat Pembayaran Baru',
+    'pay'            => 'Bayar',
     'created'        => 'Buat Pembayaran baru telah berhasil.',
     'show'           => 'Lihat Detail Pembayaran',
     'edit'           => 'Edit Pembayaran',
@@ -33,4 +33,5 @@ return [
     // Status
     'done'    => 'Sudah',
     'not_yet' => 'Belum',
+    'unpaid'  => 'Belum Dibayar',
 ];

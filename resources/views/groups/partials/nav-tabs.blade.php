@@ -7,7 +7,7 @@
         {!! link_to_route('groups.meetings.index', trans('group.meetings'), [$group]) !!}
     </li>
     <li class="{{ Request::segment(3) == 'payments' ? 'active' : '' }}">
-        {!! link_to_route('groups.payments.index', trans('group.payments'), [$group]) !!}
+        {!! link_to_route('groups.payments.index', trans('group.outstanding_payments'), [$group]) !!}
     </li>
     <li class="{{ Request::segment(3) == 'members' ? 'active' : '' }}">
         {!! link_to_route('groups.members.index', trans('group.members'), [$group]) !!}

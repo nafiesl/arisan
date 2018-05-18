@@ -60,6 +60,7 @@ return [
     'ended'                  => 'Group arisan selesai.',
 
     // Relations
-    'meetings' => 'List Pertemuan',
-    'payments' => 'List Pembayaran',
+    'meetings'             => 'List Pertemuan',
+    'payments'             => 'List Pembayaran',
+    'outstanding_payments' => 'Pembayaran Terlambat',
 ];

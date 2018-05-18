@@ -9,6 +9,9 @@ class PaymentsController extends Controller
 {
     public function index(Group $group)
     {
-        return view('groups.wip', compact('group'));
+        $members = $group->members;
+        $meetings = $group->meetings()->whereNotNull('winner_id')->orderBy('number')->get();
+
+        return view('groups.outstanding-payments', compact('group', 'members', 'meetings'));
     }
 }
