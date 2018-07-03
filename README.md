@@ -38,6 +38,33 @@ Sementara itu dulu konsepnya, jika ada perkembangan, akan diupdate kembali.
 $ vendor/bin/phpunit
 ```
 
+## Screenshot
+
+#### Dashboard
+
+Setiap member/anggota grup yang login akan melihat daftar grup arisan, dengan list tunggakan pembayaran per grupnya.
+
+![Dashboard Arisan](public/screenshots/dashboard-01.jpg)
+
+#### Detail Grup Arisan
+
+Setiap member dapat melihat detail grup arisan yang diikutinya.
+
+![Dashboard Arisan](public/screenshots/group-detail-01.jpg)
+
+#### List Pertemuan Grup
+
+![Dashboard Arisan](public/screenshots/group-meeting-list-01.jpg)
+
+#### List Pembayaran Terlambat Grup
+
+![Dashboard Arisan](public/screenshots/group-outstanding-payments-01.jpg)
+
+#### List Anggota Grup
+
+![Dashboard Arisan](public/screenshots/group-members-01.jpg)
+
+
 ## Lisensi
 
 Project Arisan merupakan software free dan open source di bawah [lisensi MIT](LICENSE).
