@@ -21,9 +21,12 @@ Auth::routes();
 Route::get('change-password', 'Auth\ChangePasswordController@show')->name('password.change');
 Route::patch('change-password', 'Auth\ChangePasswordController@update')->name('password.change');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
+    /**
+     * User Dashboard Route
+     */
+    Route::get('/home', 'DashboardController@index')->name('home');
 
     /*
      * Groups Routes

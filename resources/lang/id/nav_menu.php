@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'my_groups' => 'List Grup Saya',
+    'your_groups'               => 'List Grup Anda',
+    'your_outstanding_payments' => 'Tunggakan Pembayaran Anda',
 ];

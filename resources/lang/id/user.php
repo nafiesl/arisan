@@ -33,7 +33,8 @@ return [
     'registered_at' => 'Terdaftar sejak',
 
     // Relations
-    'groups' => 'List Member',
+    'groups'               => 'List Member',
+    'outstanding_payments' => 'Tunggakan Pembayaran',
 
     // User status
     'status'           => 'Status',
