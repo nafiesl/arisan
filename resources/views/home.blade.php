@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($groups as $key => $group)
+                    @forelse($groups as $key => $group)
                     <tr>
                         <td class="text-center">{{ 1 + $key }}</td>
                         <td>{{ $group->nameLink() }}</td>
@@ -28,7 +28,9 @@
                         <td class="text-right">{{ $group->currency }} {{ formatNo($group->payment_amount) }}</td>
                         <td class="text-center">{{ $group->status }}</td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr><td colspan="5" class="text-center bg-warning">{{ __('group.empty') }}</td></tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
@@ -49,6 +51,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($outstandingPayments->isEmpty())
+                        <tr><td colspan="5" class="text-center bg-warning">{{ __('user.no_outstanding_payment') }}</td></tr>
+                    @endif
                     @foreach($outstandingPayments->groupBy('group_id') as $groupId => $groupedMeetings)
                         @php
                             $no = 0;

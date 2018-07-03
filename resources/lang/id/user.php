@@ -33,8 +33,9 @@ return [
     'registered_at' => 'Terdaftar sejak',
 
     // Relations
-    'groups'               => 'List Member',
-    'outstanding_payments' => 'Tunggakan Pembayaran',
+    'groups'                 => 'List Member',
+    'outstanding_payments'   => 'Tunggakan Pembayaran',
+    'no_outstanding_payment' => 'Tidak ada tunggakan pembayaran.',
 
     // User status
     'status'           => 'Status',
