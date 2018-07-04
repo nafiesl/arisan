@@ -21,6 +21,16 @@ Untuk mencapai tujuan di atas, berikut adalah konsep yang akan diterapkan pada s
 Sementara itu dulu konsepnya, jika ada perkembangan, akan diupdate kembali.
 
 ## Cara Install
+
+#### Spesifikasi minimum server
+1. PHP 7.0 (dan memenuhi [server requirement Laravel 5.5](https://laravel.com/docs/5.5#server-requirements)),
+2. MySQL 5.7 atau MariaDB 10.2,
+3. SQlite (untuk automated testing).
+
+> Jika menggunakan MySQL < 5.7 atau MariaDB < 10.2, silakan [cek solusi ini](https://github.com/nafiesl/arisan/issues/2#issuecomment-392324454).
+
+#### Tahap Install
+
 1. Clone Repo, pada terminal : `$ git clone https://github.com/nafiesl/arisan.git nama-folder`
 2. `$ cd arisan`
 3. `$ composer install`
