@@ -27,6 +27,7 @@ class DashboardController extends Controller
     {
         $userGroups = $user->groups->load('meetings.payments');
         $meetings = $userGroups->pluck('meetings')->flatten()->sortBy('number');
+
         return $meetings;
     }
 }
