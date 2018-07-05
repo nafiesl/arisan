@@ -1,5 +1,5 @@
 @php
-    $meetingNumber = request('number');
+    $meetingNumber = htmlspecialchars(strip_tags(request('number')));
 @endphp
 <div id="meetingModal" class="modal" role="dialog">
     <div class="modal-dialog">
