@@ -11,14 +11,9 @@ class MeetingsController extends Controller
 {
     public function index(Group $group)
     {
-        $acceptableNumber = null;
         $meetings = $group->meetings;
         $number = (int) request('number');
-        $groupMembersCount = $group->members()->count();
-
-        if ($number && $number <= $groupMembersCount) {
-            $acceptableNumber = $number;
-        }
+        $acceptableNumber = $this->getAcceptableGroupMeetingNumber($group, $number);
 
         return view('groups.meetings', compact('group', 'meetings', 'acceptableNumber'));
     }
@@ -45,5 +40,14 @@ class MeetingsController extends Controller
         ]), 'success');
 
         return redirect()->route('groups.meetings.index', $group);
+    }
+
+    private function getAcceptableGroupMeetingNumber(Group $group, $number)
+    {
+        $groupMembersCount = $group->members()->count();
+
+        if ($number && $number <= $groupMembersCount) {
+            return $number;
+        }
     }
 }
