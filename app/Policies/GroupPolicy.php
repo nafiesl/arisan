@@ -20,7 +20,7 @@ class GroupPolicy
     public function view(User $user, Group $group)
     {
         // Update $user authorization to view $group here.
-        return true;
+        return $group->creator_id == $user->id || $group->members->contains($user->id);
     }
 
     /**
