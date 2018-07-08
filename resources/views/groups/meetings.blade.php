@@ -55,7 +55,10 @@
     </table>
 </div>
 
-@includeWhen(request('action') == 'set-meeting', 'meetings.partials.set-meeting')
+@if (request('action') == 'set-meeting' && $acceptableNumber)
+    @include('meetings.partials.set-meeting', ['meetingNumber' => $acceptableNumber])
+@endif
+
 @endsection
 
 @section('styles')

@@ -11,9 +11,16 @@ class MeetingsController extends Controller
 {
     public function index(Group $group)
     {
+        $acceptableNumber = null;
         $meetings = $group->meetings;
+        $number = (int) request('number');
+        $groupMembersCount = $group->members()->count();
 
-        return view('groups.meetings', compact('group', 'meetings'));
+        if ($number && $number <= $groupMembersCount) {
+            $acceptableNumber = $number;
+        }
+
+        return view('groups.meetings', compact('group', 'meetings', 'acceptableNumber'));
     }
 
     public function store(Request $request, Group $group)
