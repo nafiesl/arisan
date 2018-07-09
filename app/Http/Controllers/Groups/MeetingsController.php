@@ -45,8 +45,9 @@ class MeetingsController extends Controller
     private function getAcceptableGroupMeetingNumber(Group $group, $number)
     {
         $groupMembersCount = $group->members()->count();
+        $existingMeetingNumbers = $group->meetings->pluck('number')->all();
 
-        if ($number && $number <= $groupMembersCount) {
+        if ($number && $number <= $groupMembersCount && !in_array($number, $existingMeetingNumbers)) {
             return $number;
         }
     }
