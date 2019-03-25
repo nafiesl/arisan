@@ -11,7 +11,7 @@ function flash($message = null, $level = 'info')
 {
     $session = app('session');
 
-    if (! is_null($message)) {
+    if (!is_null($message)) {
         $session->flash('flash_notification.message', $message);
         $session->flash('flash_notification.level', $level);
     }
