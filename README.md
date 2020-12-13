@@ -23,7 +23,7 @@ Sementara itu dulu konsepnya, jika ada perkembangan, akan diupdate kembali.
 ## Cara Install
 
 #### Spesifikasi minimum server
-1. PHP 7.0 (dan memenuhi [server requirement Laravel 5.5](https://laravel.com/docs/5.5#server-requirements)),
+1. PHP 7.2 (dan memenuhi [server requirement Laravel 5.5](https://laravel.com/docs/5.5#server-requirements)),
 2. MySQL 5.7 atau MariaDB 10.2,
 3. SQlite (untuk automated testing).
 
