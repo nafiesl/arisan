@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Groups;
 
 use App\Group;
+use App\Http\Controllers\Controller;
 use App\Meeting;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class MeetingsController extends Controller
 {

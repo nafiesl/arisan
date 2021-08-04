@@ -1,8 +1,8 @@
 <?php
 
-use App\User;
 use App\Meeting;
 use App\Payment;
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Payment::class, function (Faker $faker) {

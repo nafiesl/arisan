@@ -2,11 +2,11 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use App\Group;
 use App\Membership;
-use Tests\TestCase;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class MembershipTest extends TestCase
 {
