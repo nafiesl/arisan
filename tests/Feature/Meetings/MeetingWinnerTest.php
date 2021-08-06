@@ -4,8 +4,8 @@ namespace Tests\Feature\Meetings;
 
 use App\Group;
 use App\Meeting;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class MeetingWinnerTest extends TestCase
 {

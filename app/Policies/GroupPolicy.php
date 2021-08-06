@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Group;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class GroupPolicy
