@@ -2,12 +2,12 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use App\Group;
 use App\Meeting;
-use Tests\TestCase;
+use App\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class GroupTest extends TestCase
 {

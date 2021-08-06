@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Auth;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class ChangePasswordTest extends TestCase
 {

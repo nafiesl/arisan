@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Groups;
 
-use App\User;
 use App\Group;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
 
 class MembersController extends Controller
 {

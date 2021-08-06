@@ -2,14 +2,14 @@
 
 namespace Tests\Unit\Models;
 
-use App\User;
 use App\Group;
 use App\Meeting;
-use App\Payment;
 use App\Membership;
-use Tests\TestCase;
-use Illuminate\Support\Collection;
+use App\Payment;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Collection;
+use Tests\TestCase;
 
 class MeetingTest extends TestCase
 {

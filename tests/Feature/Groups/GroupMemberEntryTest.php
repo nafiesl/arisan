@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Groups;
 
-use App\User;
 use App\Group;
-use Tests\TestCase;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class GroupMemberEntryTest extends TestCase
 {

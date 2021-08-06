@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
 use App\Group;
+use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Group::class, function (Faker $faker) {
